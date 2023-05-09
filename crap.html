@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Plotly Dropdown Example</title>
+  <!-- Include Plotly library -->
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+  <div>
+    <label for="plotType">Select a plot type:</label>
+    <select id="plotType">
+      <option value="scatter">Scatter Plot</option>
+      <option value="bar">Bar Plot</option>
+      <option value="line">Line Plot</option>
+    </select>
+  </div>
+  
+  <div id="plot"></div>
+  
+  <script>
+    var plotType = document.getElementById("plotType");
+    var plotDiv = document.getElementById("plot");
+    
+    // Initialize the plot with the default plot type
+    var defaultPlotType = plotType.value;
+    var data = [{
+      x: [1, 2, 3, 4, 5],
+      y: [1, 4, 2, 3, 5],
+      type: defaultPlotType
+    }];
+    Plotly.newPlot(plotDiv, data);
+    
+    // Update the plot when the user selects a different plot type
+    plotType.addEventListener("change", function() {
+      var newPlotType = plotType.value;
+      var newData = [{
+        x: [1, 2, 3, 4, 5],
+        y: [1, 4, 2, 3, 5],
+        type: newPlotType
+      }];
+      Plotly.react(plotDiv, newData);
+    });
+  </script>
+</body>
+</html>
