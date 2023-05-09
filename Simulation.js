@@ -80,18 +80,18 @@ export function gradientOptimize(solutions, iterations, learningRate = 0.000005)
 		score = RSS(solutions);
 		ratio = previousScore / score;
 
-	//	if(i % 100 === 0 && i > 0)
-	//	{
-	//		if(score > previousScore)
-	//		{	
-		//		learningRate *= 0.5;
-		//		for(let q = 0; q < solutions.length; q++)
-		//		{
-			//		solutions[q].polynomial.coeffs = previousCoeffs;
-		//		}
-		//	}
+		if(i % 100 === 0 && i > 0)
+		{
+			if(score > previousScore)
+			{	
+				learningRate *= 0.5;
+				for(let q = 0; q < solutions.length; q++)
+				{
+					solutions[q].polynomial.coeffs = previousCoeffs;
+				}
+			}
 			previousScore = score;
-	//	}
+		}
 	}	
 	return [solutions, score];
 }
@@ -108,6 +108,7 @@ export function fitCurve(solutions, tries, iterations, learningRate)
 		(lowestObj, [key, [, score]]) => score < lowestObj.score ? { key, score } : lowestObj,
 		{ score: Infinity }
 	  );
+	  console.log(rankedSolutions);
 	return rankedSolutions[lowestKey][0];
 
 }

@@ -24,7 +24,7 @@
     }
     static deserializeSolution(data)
     {
-      let solution = new Solution(data.polynomial.coeffs, data.conc, data.mw, data.mwappobs, data.species, data.molarities);
+      let solution = new Solution(data.polynomial.coeffs, data.conc, data.mw, data.mwappobs, data.veq, data.species, data.molarities);
       solution.solveMolarities();
       return solution;
     }

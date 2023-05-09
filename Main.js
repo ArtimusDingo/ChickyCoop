@@ -211,7 +211,7 @@ function runSimulation()
   let optimalSolution = [];
  // gradientOptimize(solutions, maxIterations, parseFloat(learningRate.value));
 
- optimalSolution = fitCurve(solutions, 10, 1000, learningRate.value);
+ optimalSolution = fitCurve(solutions, 100, 1000, learningRate.value);
  // let optimalSolution = fitCurve(solutions, 10, 1000, learningRate.value);
  let molaritySet = new ResultSet(optimalSolution);
  for(let o = 0; o < solutions[0].species.length ; o++)
